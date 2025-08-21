@@ -43,3 +43,19 @@ Relationships: Linked to SaleItem
 Intermediate table for products in a sale.
 
 Fields: sale, product, quantity, price
+
+8. Inventory Levels : 
+  - View current stock levels
+  - Filter by category, price range, or low stock threshold
+- Inventory Change Tracking : Logs when product stock changes, who changed it, and new quantity
+
+
+                             API Endpoints
+Inventory
+Endpoint	                          Method	                Description
+/api/inventory/products/    	      GET	                  List products
+/api/inventory/products/	           POST	             Create product
+/api/inventory/products/{id}/	      PUT	                  Update product
+/api/inventory/products/{id}/	      DELETE	             Delete product
+/api/inventory/level/	           GET	                  Check inventory levels (with filters)
+/api/inventory/inventory-changes/	 GET	                  View stock change history

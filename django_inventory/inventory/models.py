@@ -81,4 +81,14 @@ class SaleItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Sale {self.sale.id}"
+    
 
+class InventoryChange(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="changes")
+    change_amount = models.IntegerField()
+    new_quantity = models.PositiveIntegerField()
+    changed_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product.name} changed by {self.changed_by.username}"

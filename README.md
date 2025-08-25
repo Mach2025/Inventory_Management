@@ -54,8 +54,23 @@ Fields: sale, product, quantity, price
 Inventory
 Endpoint	                          Method	                Description
 /api/inventory/products/    	      GET	                  List products
-/api/inventory/products/	           POST	             Create product
+/api/inventory/products/	          POST	                Create product
 /api/inventory/products/{id}/	      PUT	                  Update product
 /api/inventory/products/{id}/	      DELETE	             Delete product
-/api/inventory/level/	           GET	                  Check inventory levels (with filters)
-/api/inventory/inventory-changes/	 GET	                  View stock change history
+/api/inventory/level/	              GET	                  Check inventory levels (with filters)
+/api/inventory/inventory-changes/	  GET	                  View stock change history.
+
+
+User Management
+-User registation ( Id, UserName, email Password).
+-CRUD operations on user via (/api/accounts/users/).
+-JWT authentication(login to get token).
+-Authenticated users can manage inventory.
+
+
+Security
+-JWT Authentication ('djangorestframework_simplejwt')
+    -Permission checks include:
+       -Only authenicated users can Create, Update or Delete Inventory.
+       -Read-Only access from unauthenicated users.
+

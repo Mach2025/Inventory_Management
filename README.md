@@ -47,7 +47,7 @@ Fields: sale, product, quantity, price
 8. Inventory Levels : 
   - View current stock levels
   - Filter by category, price range, or low stock threshold
-- Inventory Change Tracking : Logs when product stock changes, who changed it, and new quantity
+  - Inventory Change Tracking : Logs when product stock changes, who changed it, and new quantity
 
 
                              API Endpoints
@@ -75,7 +75,43 @@ Security
        -Read-Only access from unauthenicated users.
 
 
-Project Structure
-  django_inventory
+
+Users
+Endpoint 	                 Method	                Description
+/api/accounts/users/	     POST	                    Register new user
+/api/accounts/users/	     GET	                         List users
+/api/accounts/users/{id}/ 	PUT	                      Update user
+/api/accounts/users/{id}/	  DELETE	                 Delete user
+
+
+Authentication
+Endpoint	                   Method	         Description
+/api/token/	POST	Login and   GET            JWT tokens
+/api/token/refresh/	          POST	           Refresh JWT access token       
+
+
+            PROJECT STRUCTURE
+  django_inventory/
+│── django_inventory/
+│ └── settings.py
+│ └── urls.py
+│
+│── inventory/
+│ ├── models.py - Product, Supplier, Customer, Orders, Sales, InventoryChange
+│ ├── serializers.py # Serializers for all models
+│ ├── views.py - ViewSets with CRUD + custom actions
+│ ├── urls.py - API endpoints for inventory
+│
+│── users/
+│ ├── models.py - Using Django’s default User model
+│ ├── serializers.py - UserSerializer for registration/login
+│ ├── views.py - UserViewSet (CRUD)
+│ ├── urls.py - Routes for user management
+│
+│── manage.py
+
+
+Prepared By : Rebecca Machio.
+
        
 

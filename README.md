@@ -97,7 +97,7 @@ Endpoint	                   Method	         Description
 │ └── urls.py
 │
 │── inventory/
-│ ├── models.py - Product, Supplier, Customer, Orders, Sales, InventoryChange
+│ |── models.py - Product, Supplier, Customer, Orders, Sales, InventoryChange
 │ ├── serializers.py # Serializers for all models
 │ ├── views.py - ViewSets with CRUD + custom actions
 │ ├── urls.py - API endpoints for inventory

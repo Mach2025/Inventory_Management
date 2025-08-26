@@ -74,3 +74,8 @@ Security
        -Only authenicated users can Create, Update or Delete Inventory.
        -Read-Only access from unauthenicated users.
 
+
+Project Structure
+  django_inventory
+       
+

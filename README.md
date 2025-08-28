@@ -61,6 +61,16 @@ Endpoint	                          Method	                Description
 /api/inventory/inventory-changes/	  GET	                  View stock change history.
 
 
+
+"products": "http://127.0.0.1:8000/api/inventory/products/",
+    "suppliers": "http://127.0.0.1:8000/api/inventory/suppliers/",
+    "customers": "http://127.0.0.1:8000/api/inventory/customers/",
+    "orders": "http://127.0.0.1:8000/api/inventory/orders/",
+    "order-items": "http://127.0.0.1:8000/api/inventory/order-items/",
+    "sales": "http://127.0.0.1:8000/api/inventory/sales/",
+    "sale-items": "http://127.0.0.1:8000/api/inventory/sale-items/",
+    "inventory-changes": "http://127.0.0.1:8000/api/inventory/inventory-changes/"
+
 User Management
 -User registation ( Id, UserName, email Password).
 -CRUD operations on user via (/api/accounts/users/).
@@ -89,7 +99,89 @@ Endpoint	                   Method	         Description
 /api/token/	POST	Login and   GET            JWT tokens
 /api/token/refresh/	          POST	           Refresh JWT access token       
 
+User login:{
+  "username": "ajiam",
+  "password": "test12345"
+}
 
+
+. Create a Product
+
+POST /api/inventory/products/
+
+{
+  "name": "Tote Bag",
+  "description": "Black Tote bag",
+  "price": 1200.50,
+  "quantity": 15,
+  "category": "Bags"
+}
+
+2. Update a Product
+
+PUT /api/inventory/products/1/
+
+{
+  "name": "Tote Bag - Updated",
+  "description": "Black tote bag",
+  "price": 1500.00,
+  "quantity": 20,
+  "category": "Bags"
+}
+
+3. Create a Customer
+
+POST /api/inventory/customers/
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "phone": "+254700123456",
+  "address": "Nairobi, Kenya"
+}
+
+4. Create a Supplier
+
+POST /api/inventory/suppliers/
+
+{
+  "name": "Nairobi Textile Supplies",
+  "email": "contact@nairobitextilesupplies.com",
+  "phone": "+254711223344",
+  "address": "Westlands, Nairobi"
+}
+
+5. Create a Sale (Invoice)
+
+POST /api/inventory/sales/
+
+{
+  "customer": 1,
+  "products": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    }
+  ],
+  "total_amount": 3000.00,
+  "status": "completed"
+}
+
+6. Create a Purchase (Stock In)
+
+POST /api/inventory/purchases/
+
+{
+  "supplier": 1,
+  "products": [
+    {
+      "product_id": 1,
+      "quantity": 50
+    }
+  ],
+  "total_cost": 60000.00,
+  "status": "received"
+}
             PROJECT STRUCTURE
   django_inventory/
 │── django_inventory/
